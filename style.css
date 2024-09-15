@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #333;
+}
+
+.slider {
+  position: relative;
+  width: 600px;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #222;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 100%;
+}
+
+.slide {
+  min-width: 100%;
+}
+.slider_image_container {
+  max-width: 100%;
+  height: auto;
+}
+
+.slider_image_container img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* .slide img {
+  width: 100%;
+  height: auto;
+} */
+
+.captions {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.caption {
+  display: none;
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+/* Отображение правильного слайда */
+#slide1:checked ~ .slides {
+  transform: translateX(0);
+}
+
+#slide2:checked ~ .slides {
+  transform: translateX(-100%);
+}
+
+#slide3:checked ~ .slides {
+  transform: translateX(-200%);
+}
+
+/* Отображение правильной подписи */
+#slide1:checked ~ .captions #caption1 {
+  display: block;
+}
+
+#slide2:checked ~ .captions #caption2 {
+  display: block;
+}
+
+#slide3:checked ~ .captions #caption3 {
+  display: block;
+}
+
+.caption p {
+  color: #fff;
+  font-size: 18px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Навигационные точки */
+.navigation {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.nav-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: #888;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type='radio']:checked + .nav-dot {
+  background-color: #fff;
+}
