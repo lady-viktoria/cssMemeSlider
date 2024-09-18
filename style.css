@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #333;
+}
+
+.slider {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #222;
+}
+
+.slides {
+  margin-bottom: 40px;
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 85%;
+}
+
+.slide {
+  min-width: 100%;
+}
+.slider_image_container {
+  background: url(src/img/photo_2024-08-03_13-34-24.jpg) center center/contain
+    no-repeat;
+  max-width: 100%;
+  height: 100%;
+}
+.slider_2 {
+  background-image: url(src/img/photo_2024-08-04_17-58-00.jpg);
+}
+.slider_3 {
+  background-image: url(src/img/photo_2024-08-04_17-59-55.jpg);
+}
+.captions {
+  display: inline-block;
+  text-align: left;
+}
+
+.caption {
+  display: none;
+}
+
+input[type='radio'] {
+  display: none;
+}
+
+/* Отображение правильного слайда */
+#slide1:checked ~ .slides {
+  transform: translateX(0);
+}
+
+#slide2:checked ~ .slides {
+  transform: translateX(-100%);
+}
+
+#slide3:checked ~ .slides {
+  transform: translateX(-200%);
+}
+
+/* Отображение правильной подписи */
+#slide1:checked ~ .captions #caption1 {
+  display: block;
+}
+
+#slide2:checked ~ .captions #caption2 {
+  display: block;
+}
+
+#slide3:checked ~ .captions #caption3 {
+  display: block;
+}
+
+.caption p {
+  color: #fff;
+  font-size: 18px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Навигационные точки */
+.navigation {
+  float: right;
+  text-align: right;
+}
+
+.nav-dot {
+  display: inline-block;
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  background-color: #888;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type='radio']:checked + .nav-dot {
+  background-color: #fff;
+}
+@media (max-width: 600px) {
+  .slider {
+    display: flex;
+    flex-direction: column;
+  }
+  .captions {
+    text-align: center;
+  }
+  .navigation {
+    margin-top: 10px;
+    text-align: center;
+  }
+}
